@@ -17,7 +17,11 @@ public class UserManagement {
 
         User user = userRepository.findById(userId).get();
 
-        user=updatedUser;
+        user.setUserName(updatedUser.getUserName());
+        user.setEmail(updatedUser.getEmail());
+        user.setName(updatedUser.getName());
+
+        userRepository.save(user);
 
 
         return user;
