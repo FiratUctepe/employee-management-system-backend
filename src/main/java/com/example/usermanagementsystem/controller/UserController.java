@@ -1,6 +1,7 @@
 package com.example.usermanagementsystem.controller;
 
 import com.example.usermanagementsystem.business.UserManagement;
+import com.example.usermanagementsystem.exception.UserNotFoundException;
 import com.example.usermanagementsystem.model.User;
 import com.example.usermanagementsystem.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin
 public class UserController {
 
     @Autowired
@@ -29,14 +31,15 @@ public class UserController {
     }
 
     @GetMapping("/user/{userId}")
-    public Optional<User> getUserByIds(@PathVariable Long userId){
-        return userRepository.findById(userId);
+    public User getUserById(@PathVariable Long userId){
+        return userRepository.findById(userId)
+                .orElseThrow(()-> new UserNotFoundException(userId));
     }
 
     @PutMapping("/user/update/{userId}")
-    public User putUserByID(@PathVariable Long userId,@RequestBody User updatedUser){
-
-        return userManagement.updateUserById(userId,updatedUser);
+    public User updateUserById(@PathVariable Long userId,@RequestBody User updatedUser){
+        return userManagement.updateUserById(userId,updatedUser)
+                .orElseThrow(()->new UserNotFoundException(userId));
     }
 
 }

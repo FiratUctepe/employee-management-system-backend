@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.0.3</version>
+		<version>3.0.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>employee-management-system</artifactId>
+	<artifactId>user-management-system</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>employee-management-system</name>
-	<description>employee management system fullstack</description>
+	<name>user-management-system</name>
+	<description>user management system fullstack</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -46,11 +46,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-ui</artifactId>
-			<version>1.6.6</version>
 		</dependency>
 	</dependencies>
 

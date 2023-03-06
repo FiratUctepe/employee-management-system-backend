@@ -13,17 +13,20 @@ public class UserManagement {
     @Autowired
     private UserRepository userRepository;
 
-    public User updateUserById(Long userId,User updatedUser){
+    public Optional<User> updateUserById(Long userId, User updatedUser){
+
+       return userRepository.findById(userId).map((user)->{
+           user.setUserName(updatedUser.getUserName());
+           user.setEmail(updatedUser.getEmail());
+           user.setName(updatedUser.getName());
+           return userRepository.save(user);
+       });
+
+    }
+
+    public User getUserById(Long userId){
 
         User user = userRepository.findById(userId).get();
-
-        user.setUserName(updatedUser.getUserName());
-        user.setEmail(updatedUser.getEmail());
-        user.setName(updatedUser.getName());
-
-        userRepository.save(user);
-
-
         return user;
     }
 
